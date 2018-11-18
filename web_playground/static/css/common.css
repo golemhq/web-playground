@@ -1,0 +1,43 @@
+
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+a         { color: #3399cc }
+a:link    { color: #3399cc }
+a:visited:not(.btn) { color: #3399cc }
+a:hover   { color: #2b81ad }
+a:active  { color: #3399cc }
+
+.logo:link, .logo:visited, .logo:hover, .logo:active {
+    text-decoration: none !important;
+    color: #3399cc;
+    font-size: 20px;
+}
+
+/* spinner */
+
+.spinner {
+    display: none
+}
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #333;
+    animation: spinner .6s linear infinite;
+}

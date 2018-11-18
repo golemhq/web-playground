@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from 'component_library.html' import clickable_button %}
+{% from 'component_library.html' import writable_input %}
+
+{% block title %} - Elements{% endblock %}
+
+{% block body %}
+<h1>Common Elements</h1>
+<br>
+<div class="col-sm-6 offset-sm-3">
+    {{ clickable_button('button-one') }}
+    <br>
+    {{ writable_input('input-one') }}
+    <br>
+    <textarea id="textarea-1" name="textarea-name" class="form-control" rows="4" cols="50" placeholder="textarea"></textarea>
+    <br>
+    <select id="select-1" class="form-control">
+      <option value="option-volvo">Volvo</option>
+      <option value="option-saab">Saab</option>
+      <option value="option-mercedes" selected>Mercedes</option>
+      <option value="option-audi">Audi</option>
+    </select>
+    <br>
+    <div>
+        <input type="checkbox" id="selected-checkbox" class="form-check-input" checked>
+        <label class="form-check-label" for="selected-checkbox" selected>Selected Checkbox</label>
+    </div>
+    <div>
+        <input type="checkbox" id="unselected-checkbox" class="form-check-input">
+        <label class="form-check-label" for="unselected-checkbox">Unselected Checkbox</label>
+    </div>
+    <br>
+    <div>
+        <input id="exampleRadios1" class="form-check-input" type="radio" name="exampleRadioButtons" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">Default radio</label>
+    </div>
+    <div>
+        <input id="exampleRadios2" class="form-check-input" type="radio" name="exampleRadioButtons" value="option2">
+        <label class="form-check-label" for="exampleRadios2">Default radio</label>
+    </div>
+    <br>
+    <div>
+        <img id="image1" src="{{url_for('static', filename='images/cat-image.jpg')}}" alt="cat image" height="250" width="300">
+    </div>
+    <br>
+    <div>
+        <a id="link1" href="/">this is a link to index</a>
+    </div>
+    <br>
+    <div>
+        <p>This is just a paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} - Form Basic Result{% endblock %}
+
+{% block body %}
+<div class="container" style="max-width: 400px">
+    <h1>Basic Form Result</h1>
+    <br>
+    <div class="text-left">
+        <div class="form-group row">
+            <label class="col-sm-5 col-form-label strong"><strong>Name</strong></label>
+            <label class="col-sm-7 col-form-label" id="name">{{data['name']}}</label>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-5 col-form-label"><strong>Planet</strong></label>
+            <label class="col-sm-7 col-form-label" id="planet">{{data['planet']}}</label>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-5 col-form-label"><strong>Lightsaber</strong></label>
+            <label class="col-sm-7 col-form-label" id="lightsaber">{{data['lightsaber']}}</label>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-5 col-form-label"><strong>Alignment</strong></label>
+            <label class="col-sm-7 col-form-label" id="alignment">{{data['alignment']}}</label>
+        </div>
+    </div>
+</div>
+{% endblock %}

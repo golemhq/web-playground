@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} - Alert{% endblock %}
+
+{% block body %}
+<h1>Alert</h1>
+<div class="center-block" style="max-width: 400px">
+    <br>
+    <button class="btn btn-primary" id="alert-button" onclick="showAlert()">Alert</button>
+    <br>
+    <span>The alert was accepted: </span><span id="result">0</span><span> times</span>
+    <hr>
+    <br>
+    <button class="btn btn-primary" id="alert-delay-button" onclick="showAlertDelay()">Delayed Alert</button>
+    <span id="spinner" class="spinner"></span>
+    <br>
+    <span>The alert was accepted: </span><span id="result-delay">0</span><span> times</span>
+</div>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+	function showAlert(){
+		alert('an alert');
+		$("#result").html(parseInt($("#result").html())+1)
+	}
+	function showAlertDelay(){
+	    $("#spinner").show();
+	    window.setTimeout(function(){
+	        $("#spinner").hide();
+	        window.setTimeout(function(){
+	            alert('a delayed alert');
+	            $("#result-delay").html(parseInt($("#result-delay").html())+1)
+	        }, 100);
+	    }, 3000);
+	}
+</script>
+{% endblock %}

@@ -1,0 +1,31 @@
+
+{% macro clickable_button(id, classes=[], attrs=[], text='Click Me') -%}
+    <div id="{{id}}-container">
+        <button id="{{id}}" class="btn btn-primary {% for cls in classes %}{{cls}}{% endfor %}" {% for attr in attrs %}{{attr[0]}}="{{attr[1]}}" {% endfor %} onclick="$('#{{id}}-result').html('Clicked!')">{{text}}</button>
+        <span id="{{id}}-result" class="span-result"></span>
+    </div>
+{%- endmacro %}
+
+
+{% macro writable_input(id, attrs=[], value='') -%}
+    <div id="{{id}}-container">
+        <input type="text" class="form-control" id="{{id}}" {% for attr in attrs %}{{attr[0]}}="{{attr[1]}}" {% endfor %} onkeyup="$('#{{id}}-input-result').html('Welcome ' + $(this).val());">
+        <span id="{{id}}-input-result" class="span-result"></span>
+    </div>
+{%- endmacro %}
+
+
+{% macro double_clickable_button(id, attrs=[]) -%}
+    <div id="{{id}}-container">
+        <button id="{{id}}" class="btn btn-primary" {% for attr in attrs %}{{attr[0]}}="{{attr[1]}}" {% endfor %} ondblclick="$('#{{id}}-result').html('Double Clicked!')">Double click Me</button>
+        <span id="{{id}}-result" class="span-result"></span>
+    </div>
+{%- endmacro %}
+
+
+{% macro mouseoverable_button(id, attrs=[]) -%}
+    <div id="{{id}}-container">
+        <button id="{{id}}" class="btn btn-primary" {% for attr in attrs %}{{attr[0]}}="{{attr[1]}}" {% endfor %} onmouseover="$('#{{id}}-result').html('Mouse over!')">Click Me For Mouse Over</button>
+        <span id="{{id}}-result" class="span-result"></span>
+    </div>
+{%- endmacro %}

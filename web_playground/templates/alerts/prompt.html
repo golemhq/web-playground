@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} - Prompt{% endblock %}
+
+{% block body %}
+<h1>Prompt</h1>
+<br>
+<button class="btn btn-primary" id="prompt-button">What's your name?</button>
+<br>
+<span>Your name is: </span><span id="result" style="display: inline-block"></span>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+	$("#prompt-button").click(function(){
+		var nameValue = prompt('your name', '');
+        if(nameValue === null){
+            $("#result").html('DISMISSED')
+        }
+        else if(nameValue == ''){
+            $("#result").html('EMPTY')
+        }
+        else {
+            $("#result").html(nameValue)
+        }
+	})
+</script>
+{% endblock %}

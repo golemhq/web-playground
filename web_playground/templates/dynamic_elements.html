@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% from 'component_library.html' import clickable_button %}
+{% from 'component_library.html' import writable_input %}
+
+{% block title %} - Dynamic Elements{% endblock %}
+
+{% block head_bottom %}
+<style>
+    .min-height-92 {
+        min-height: 92px
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>Dynamic Elements</h1>
+<br>
+<h4>Hidden elements</h4>
+<div class="col-sm-6  offset-sm-3 min-height-92">
+    {{ clickable_button('button-one', attrs=[('style','display: none')]) }}
+    <br>
+    {{ writable_input('input-one', attrs=[('style','display: none')]) }}
+</div>
+<hr>
+<h4>To Be Hidden</h4>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    {{ clickable_button('button-two') }}
+    <br>
+    {{ writable_input('input-two') }}
+</div>
+<hr>
+<h4>Disabled Elements</h4>
+<div class="col-sm-6 offset-sm-3">
+    {{ clickable_button('button-three', attrs=[('disabled','')]) }}
+    <br>
+    {{ writable_input('input-three', attrs=[('disabled','')]) }}
+</div>
+<hr>
+<h4>To Be Disabled</h4>
+<div class="col-sm-6 offset-sm-3">
+    {{ clickable_button('button-four') }}
+    <br>
+    {{ writable_input('input-four') }}
+</div>
+<hr>
+<h4>Not Present</h4>
+<div class="col-sm-6 offset-sm-3 min-height-92" id="elements-dont-exist">
+</div>
+<hr>
+<h4>To Be Removed</h4>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    {{ clickable_button('button-six') }}
+    <br>
+    {{ writable_input('input-six') }}
+</div>
+<hr>
+<h4>Text changes</h4>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    {{ clickable_button('button-seven', text='Initial Text') }}
+</div>
+<hr>
+<h4>Value changes</h4>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    {{ writable_input('input-seven', attrs=[('value', 'initial value')]) }}
+</div>
+<hr>
+<h4>Add attribute</h4>
+<p>Attribute <i>verified</i> is added.</p>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    {{ clickable_button('button-height') }}
+</div>
+<hr>
+<h4>Remove attribute</h4>
+<p>Attribute <i>verified</i> is removed.</p>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    {{ clickable_button('button-nine', attrs=[('verified', 'true')]) }}
+</div>
+<hr>
+<h4>Change Title</h4>
+<p>change page title after <i>delay</i>.</p>
+<div class="col-sm-6 offset-sm-3 min-height-92">
+    <button id="change-title-button" class="btn btn-primary" onclick="changeTitle()">Change Title</button>
+</div>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+	var delay = {{delay}};
+	$(window).on('load', function(){
+		setTimeout(function(){ updateElements() }, delay*1000);
+	})
+
+	function updateElements(){
+        // display hidden elements
+        $("#button-one").show();
+        $("#input-one").show();
+        // hide elements
+        $("#button-two").hide();
+        $("#input-two").hide();
+        // enable elements
+        $("#button-three").prop('disabled', false);
+        $("#input-three").prop('disabled', false);
+        // disable elements
+        $("#button-four").prop('disabled', true);
+        $("#input-four").prop('disabled', true);
+        // create elements
+        $("#elements-dont-exist").append(Common.clickable_button('button-five'))
+        $("#elements-dont-exist").append($('<br>'))
+        $("#elements-dont-exist").append(Common.writable_input('input-five'))
+        // remove elements
+        $("#button-six").remove();
+        $("#input-six").remove();
+        // change text
+        $("#button-seven").html('New Text');
+        // change value
+        $("#input-seven").val('new value');
+        // add attribute
+        $("#button-height").attr('verified', 'true');
+        // remote attribute
+        $("#button-nine").removeAttr('verified');
+	}
+	function changeTitle(){
+	    setTimeout(function(){
+	        document.title = 'New Title'
+	    }, delay*1000);
+	}
+</script>
+{% endblock %}

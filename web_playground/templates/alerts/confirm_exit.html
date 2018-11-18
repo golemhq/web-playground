@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} - Confirm Exit{% endblock %}
+
+{% block body %}
+<h1>Confirm Exit</h1>
+<br>
+<p>A confirmation box will be displayed when leaving this page</p>
+<a href="/" id="index">Go to index</a>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+	window.onbeforeunload = function(e) {
+	  	var dialogText = 'Dialog text here';
+	  	e.returnValue = dialogText;
+	  	return dialogText;
+	};
+</script>
+{% endblock %}

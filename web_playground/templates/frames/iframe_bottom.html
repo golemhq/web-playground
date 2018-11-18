@@ -1,0 +1,19 @@
+{% from 'component_library.html' import clickable_button %}
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/external/bootstrap.min.css')}}">
+    <script src="{{url_for('static', filename='js/external/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/common.js')}}"></script>
+</head>
+<body>
+<h2>IFrame Bottom</h2>
+{{ clickable_button('button-bottom') }}
+<br>
+<div style="width: 100%">
+<iframe src="/iframe-bottom-left" name="iframe-bottom-left" id="iframeBottomLeft" style="width: 48%; float: left"></iframe>
+<iframe src="/iframe-bottom-right" name="iframe-bottom-right" id="iframeBottomRight" style="width: 48%; float: right"></iframe>
+    </div>
+</body>
+</html>
+

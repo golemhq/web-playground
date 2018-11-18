@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1>Disabled Elements</h1>
+
+<a href="/" disabled>Link</a>
+<button disabled>button</button>
+<div style="background-color:lightblue" disabled>This is a disabled div</div>
+<form disabled></form>
+<h3 disabled>Disabled Title</h3>
+<iframe src="https://www.w3schools.com" disabled></iframe>
+<img src="" disabled>
+<input type="button" disabled>
+<input type="checkbox" disabled>
+<input type="color" disabled>
+<input type="date" disabled>
+<input type="email" disabled>
+<input type="file" disabled>
+<input type="image" disabled>
+<input type="password" disabled>
+<input type="radio" disabled>
+<input type="range" disabled>
+<input type="reset" disabled>
+<input type="search" disabled>
+<input type="submit" disabled>
+<input type="tel" disabled>
+<input type="text" disabled>
+<input type="time" disabled>
+<input type="url" disabled>
+<br>
+<span>Your name is: </span><span id="name"></span>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+	$("#prompt-button").click(function(){
+		var nameValue = prompt('your name');
+		$("#name").html(nameValue)
+	})
+</script>
+{% endblock %}

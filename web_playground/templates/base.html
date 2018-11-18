@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    {% block head %}{% endblock %}
+    <title>Web Playground{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/external/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/common.css')}}">
+    <script src="{{url_for('static', filename='js/external/jquery.min.js')}}"></script>
+    {% block head_bottom %}{% endblock %}
+</head>
+<body>
+    <div style="position: absolute; margin-top: 10px; margin-left: 10px; z-index: 10;">
+        <a class="logo" href="/"><strong>Web Playground</strong></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='js/external/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/common.js')}}"></script>
+    {% block body_bottom %}{% endblock %}
+</body>
+</html>

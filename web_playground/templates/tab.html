@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% from 'component_library.html' import clickable_button %}
+
+{% block title %} - Tab{% endblock %}
+
+{% block body %}
+<h1>Tab</h1>
+{{ clickable_button('button-one') }}
+<br>
+<button class="btn btn-primary" onclick="window.close()">Close Tab</button>
+{% endblock %}

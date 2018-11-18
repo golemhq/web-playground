@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from 'component_library.html' import clickable_button %}
+
+{% block head %}
+<title>IFrames</title>
+<style>
+    iframe {
+        width: 100%
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>IFrames</h1>
+{{ clickable_button('button-main-content') }}
+<br>
+<iframe src="/iframe-top" name="iframe-top" id="iframeTop"></iframe>
+<br>
+<iframe src="/iframe-bottom/" name="iframe-bottom" id="iframeBottom" style="height: 260px"></iframe>
+{% endblock %}

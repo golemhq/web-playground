@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %} - Ajax Request{% endblock %}
+
+{% block body %}
+<div class="center-block" style="max-width: 400px">
+    <h1>Calculator</h1>
+    <br>
+    <div class="center-block" style="max-width: 300px">
+        <div class="input-group mb-3">
+            <input type="number" id="number-one" class="form-control" value="2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">+</span>
+            </div>
+            <input type="number" id="number-two" class="form-control" value="3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">=</span>
+            </div>
+            <input type="text" id="result" class="form-control" readonly>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Delay</span>
+            </div>
+            <input type="number" step="1" id="delay" class="form-control" value="2">
+            <button type="submit" style="width:150px" id="submit-button" class="btn btn-primary" onclick="calculateSum()">Submit</button>
+        </div>
+        <div class="mb-3">
+            <span id="spinner" class="spinner"></span>
+        </div>
+    </div>
+</div>
+<script>
+    function calculateSum(){
+        let numberOne = $("#number-one").val();
+        let numberTwo = $("#number-two").val();
+        let delay = $("#delay").val();
+        $("#spinner").show();
+        $("#result").html('')
+        $.ajax({
+            type: "POST",
+            url: "/ajax-request-process/",
+            data: {
+                numberOne: numberOne,
+                numberTwo: numberTwo,
+                delay: delay
+            },
+            dataType: "json",
+            success: function(result){
+                if(result == null){
+                    result = 'error'
+                }
+                $("#spinner").hide();
+                $("#result").val(result);
+            }
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %} - Drag and Drop{% endblock %}
+
+{% block head_bottom %}
+<style>
+#wrapper {
+	height: 250px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.target-div {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #aaaaaa;
+    display:flex;
+  	align-items:center;
+  	justify-content:center;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<h1>Drag and Drop</h1>
+<br>
+<div class="center-block" style="max-width: 500px">
+    <div id="wrapper">
+        <div id="target1" class="target-div" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img id="airplane" src="{{url_for('static', filename='images/airplane.png')}}" draggable="true" ondragstart="drag(event)" width="100">
+        </div>
+        <div id="target2" class="target-div" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div id="log" class="text-left"></div>
+</div>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+    $("#log").append("<div>drag event</div>")
+}
+function drop(ev) {
+    ev.preventDefault();
+    let id = ev.dataTransfer.getData("text");
+    let img = document.getElementById(id);
+    if(!ev.target.contains(img)){
+        ev.target.appendChild(img);
+        $("#log").append("<div>drop event</div>")
+    }
+}
+</script>
+{% endblock %}

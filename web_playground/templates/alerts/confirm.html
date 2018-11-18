@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} - Confirm{% endblock %}
+
+{% block body %}
+<h1>Confirm</h1>
+<br>
+<button class="btn btn-primary" id="confirm-button">Confirm</button>
+<br>
+<span>The status is: </span><span id="result" style="display: inline-block"></span>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+	$("#confirm-button").click(function(){
+		let result = confirm('Do you like pizza?');
+        console.log(result);
+        if(result === true){
+            $("#result").html('CONFIRMED')
+        }
+        else {
+            $("#result").html('NOT CONFIRMED')
+        }
+	})
+</script>
+{% endblock %}

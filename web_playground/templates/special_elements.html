@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from 'component_library.html' import clickable_button %}
+{% from 'component_library.html' import double_clickable_button %}
+{% from 'component_library.html' import mouseoverable_button %}
+
+{% block title %} - Special Elements{% endblock %}
+
+{% block head_bottom %}
+<style>
+    #button-not-interactable {
+        width: 0px;
+        height:0px;
+        overflow: hidden;
+        border: 0px;
+        padding: 0px;
+        margin: 0px
+    }
+	.overlay-div {
+		background: repeating-linear-gradient(
+		    -55deg,
+		    rgba(34, 34, 34, 0),
+		    rgba(34, 34, 34, 0) 15px,
+		    rgba(51, 51, 51, 0.6) 14px,
+		    rgba(51, 51, 51, 0.6) 31px
+		);
+	}
+	#button-one-container {
+		position: relative;
+    	top: 50%;
+    	transform: translateY(-50%);
+	}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="center-block" style="max-width: 400px">
+    <h1>Special Elements</h1>
+    <br>
+    <h4>Hidden Element</h4>
+    <div id="hidden-button-container" style="min-height: 30px">
+        <button id="hidden-button" style="display: none; height: 30px; width: 100px" onclick="$('#hidden-button-result').html('Clicked!')">Click Me</button>
+        <span id="hidden-button-result" class="span-result"></span>
+    </div>
+    <hr>
+    <h4>No Width or Height</h4>
+    {{ clickable_button('button-not-interactable') }}
+    <hr>
+    <h4>Overlapped element</h4>
+    <div class="center-block" style="width: 150px; height: 100px; position: relative">
+        {{ clickable_button('button-one', classes=['btn-sm'], text="can't touch this") }}
+        <div class="overlay-div" style="width: 150px; height: 100px; position: absolute; top: 0"></div>
+    </div>
+    <hr>
+    <h4>Double Click Event</h4>
+    {{ double_clickable_button('double-click-one') }}
+    <hr>
+    <h4>Mouse Over Event</h4>
+    {{ mouseoverable_button('mouse-over-one') }}
+</div>
+{% endblock %}

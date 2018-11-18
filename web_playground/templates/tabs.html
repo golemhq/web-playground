@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %} - Tabs{% endblock %}
+
+{% block body %}
+<div class="center-block" style="max-width: 400px">
+    <h1>Tabs</h1>
+    <br>
+    <a target="_blank" href="/tab/" class="btn btn-primary" id="openTab">Open New Tab</a>
+    <br>
+    <br>
+    <a target="_blank" href="/tab/?delay=4" class="btn btn-primary" id="openLoadingTab">New Loading Tab</a>
+    <br>
+    <br>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="delay=0" id="delay">
+        <input type="text" class="form-control" placeholder="title=tab" id="title">
+         <div class="input-group-append">
+             <button id="goButtonCustom" class="btn btn-outline-secondary" type="button" onclick="openCustomTab()">Open Tab
+             </button>
+        </div>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Open URL in new tab" id="urlInput">
+        <div class="input-group-append">
+            <button id="goButton" class="btn btn-outline-secondary" type="button" onclick="openUrlInNewTab()">Go
+            </button>
+        </div>
+    </div>
+    <a id="hiddenLink" href="#" target="_blank" style="display: none"></a>
+</div>
+{% endblock %}
+
+{% block body_bottom %}
+<script>
+    function openCustomTab(){
+        let delay = $("#delay").val() || 0;
+        let title = $("#title").val() || 'Tab';
+        let url = '/tab/?delay=' + delay + '&title=' + title; // damn you ie11
+        $("#hiddenLink").attr("href", url)[0].click();
+    }
+    function openUrlInNewTab(){
+        let url = $("#urlInput").val();
+        $("#hiddenLink").attr("href", url)[0].click();
+    }
+</script>
+{% endblock %}
