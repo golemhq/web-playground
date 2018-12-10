@@ -12,6 +12,11 @@
     <div style="position: absolute; margin-top: 10px; margin-left: 10px; z-index: 10;">
         <a class="logo" href="/"><strong>Web Playground</strong></a>
     </div>
+    <a href="https://github.com/golemhq/web-playground">
+        <img style="position: absolute; top: 0; right: 0; border: 0;"
+             src="{{url_for('static', filename='images/forkme.png')}}"
+             alt="Fork me on GitHub">
+    </a>
     <div class="container">
         <div class="row">
             <div class="col text-center">
@@ -19,6 +24,7 @@
             </div>
         </div>
     </div>
+    <!--<footer class="text-center"></footer>-->
     <script src="{{url_for('static', filename='js/external/bootstrap.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/common.js')}}"></script>
     {% block body_bottom %}{% endblock %}

@@ -1,3 +1,14 @@
+html, body {
+    height: 100%
+}
+
+.container {
+    height: calc(100% - 40px)
+}
+
+footer {
+    height: 40px
+}
 
 .center-block {
    margin-left:auto;
@@ -8,9 +19,7 @@
     list-style-type: none;
 }
 
-a         { color: #3399cc }
-a:link    { color: #3399cc }
-a:visited:not(.btn) { color: #3399cc }
+a:not(.btn) { color: #3399cc !important }
 a:hover   { color: #2b81ad }
 a:active  { color: #3399cc }
 
