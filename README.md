@@ -5,6 +5,8 @@ A demo web application useful for sharpening automation tools. Written in Python
 
 Used by [Golem](https://github.com/golemhq/golem)
 
+See it live: https://www.web-playground.net/
+
 ## Installing
 
 Requires: Python 3.5+
